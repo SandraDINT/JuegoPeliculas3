@@ -89,12 +89,13 @@
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Puntuación" />
-                    <TextBox Grid.Row="1"
+                    <TextBlock Text="Puntuación" 
+                               FontSize="40"/>
+                    <TextBlock Grid.Row="1"
                              Grid.RowSpan="2"
-                             Height="100"
-                             Width="150"
-                             HorizontalAlignment="Left" />
+                             HorizontalAlignment="Left"
+                             Text="{Binding Path=Partida.Puntuacion}"
+                               FontSize="30"/>
                     <Button x:Name="buttonNuevaPartida"
                         Grid.Column="1"
                             Grid.Row="1"
@@ -102,7 +103,8 @@
                             Height="20"
                             VerticalAlignment="Top"
                             Click="buttonNuevaPartida_Click"
-                            IsEnabled="{Binding Path=DatosCargados}"/>
+                            IsEnabled="{Binding Path=DatosCargados}"
+                            Margin="0,50,0,0"/>
                     <Button x:Name="buttonFinalizar"
                         Grid.Column="1"
                             Grid.Row="2"
@@ -110,12 +112,14 @@
                             Height="20"
                             VerticalAlignment="Top"
                             IsEnabled="{Binding Path=DatosCargados}"
-                            Click="buttonFinalizar_Click"/>
+                            Click="buttonFinalizar_Click"
+                            Margin="0,10,0,0" />
                     <TextBlock Grid.Row="3"
                                Text="Título de la película"
                                Margin="0,30,0,0" />
                     <TextBox x:Name="textBoxTituloPelicula"
-                             Grid.Row="4" />
+                             Grid.Row="4" 
+                             Text="{Binding Path=Partida.TextoAValidar}"/>
                     <Button x:Name="buttonValidar"
                             Grid.Column="1"
                             Grid.Row="4"

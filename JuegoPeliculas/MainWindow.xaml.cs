@@ -69,19 +69,18 @@ namespace JuegoPeliculas
         private void checkBoxPista_Checked(object sender, RoutedEventArgs e)
         {
             textBlockPista.Visibility = Visibility.Visible;
+            vm.PistaDada = true; 
         }
 
         private void checkBoxPista_Unchecked(object sender, RoutedEventArgs e)
         {
             textBlockPista.Visibility = Visibility.Collapsed;
+            vm.PistaDada = false;
         }
 
         private void buttonValidar_Click(object sender, RoutedEventArgs e)
         {
-            if(textBoxTituloPelicula.Text == vm.PeliculaActual.Titulo)
-            {
-                MessageBox.Show("¡Has acertado!");
-            }
+            vm.Validar();
         }
 
         private void buttonAddPelicula_Click(object sender, RoutedEventArgs e)

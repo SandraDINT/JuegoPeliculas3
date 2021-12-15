@@ -2,9 +2,6 @@
 
 class Pelicula : ObservableObject
 {
-
-
-
     private string titulo;
     public string Titulo
     {

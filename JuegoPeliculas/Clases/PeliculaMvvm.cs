@@ -8,13 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using System.Windows;
 
 class PeliculaMVVM : ObservableObject
 {
-    /*Me he quedado a medias de usar el azureService*/
-
+    private const int PUNTUACION = 10;
 
     private ListaPeliculasService servicioPeliculas;
     private AzureService azureService;
@@ -27,8 +25,24 @@ class PeliculaMVVM : ObservableObject
         ContadorPeliculaActual = 1;
         _nivelesDificultad = new List<String> {"Fácil", "Normal", "Difícil" };
         _generos = new List<String> { "Comedia", "Drama", "Acción", "Terror", "Ciencia-Ficción" };
-        PeliculaFormulario = null;
+        PeliculaFormulario = new Pelicula();
         azureService = new AzureService();
+        Partida = new Partida();
+        PistaDada = false;
+    }
+
+    private bool _pistaDada;
+    public bool PistaDada
+    {
+        get { return _pistaDada; }
+        set { SetProperty(ref _pistaDada, value); }
+    }
+
+    private bool _addPeliculaBool;
+    public bool AddPeliculaBool
+    {
+        get { return _addPeliculaBool; }
+        set { SetProperty(ref _addPeliculaBool, value); }
     }
 
     private Partida _partida;
@@ -145,6 +159,8 @@ class PeliculaMVVM : ObservableObject
 
     public void AddPelicula()
     {
+        AddPeliculaBool = true;
+
         Pelicula pelicula = new Pelicula();
         PeliculaActual = PeliculaFormulario;
         EditandoPelicula = true;
@@ -154,8 +170,6 @@ class PeliculaMVVM : ObservableObject
             new Pelicula(PeliculaFormulario.Titulo, PeliculaFormulario.Pista, PeliculaFormulario.Cartel, PeliculaFormulario.Nivel, PeliculaFormulario.Genero);
             Peliculas.Add(pelicula);
         }
-             
-        
     }
     public void EditarPelicula()
     {
@@ -172,9 +186,31 @@ class PeliculaMVVM : ObservableObject
     }
     public void NuevaPartida()
     {
-        if(Peliculas.Count > 0)
+        if(Peliculas.Count >= 5)
         {
             DatosCargados = true;
+        }
+        else
+        {
+            MessageBox.Show("¡No hay películas suficientes!");
+        }
+    }
+    public void Validar()
+    {
+        int pos = Peliculas.IndexOf(PeliculaActual);
+        if (Partida.TextoAValidar == PeliculaActual.Titulo)
+        {
+            MessageBox.Show("¡Has acertado!");
+            if (!PistaDada)
+            {
+                Partida.Puntuacion += PUNTUACION;
+            }
+            else
+            {
+                Partida.Puntuacion += PUNTUACION / 2;
+            }
+            PeliculaActual = Peliculas[pos + 1];
+            ContadorPeliculaActual = pos + 2;
         }
     }
 
