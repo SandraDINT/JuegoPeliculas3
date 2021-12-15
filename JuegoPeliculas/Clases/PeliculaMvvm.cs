@@ -31,6 +31,13 @@ class PeliculaMVVM : ObservableObject
         azureService = new AzureService();
     }
 
+    private Partida _partida;
+    public Partida Partida
+    {
+        get { return _partida; }
+        set { SetProperty(ref _partida, value); }
+    }
+
     private bool _datosCargados;
     public bool DatosCargados
     {

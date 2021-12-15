@@ -108,6 +108,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Clases\Partida.cs" />
     <Compile Include="Clases\PeliculaMvvm.cs" />
     <Compile Include="Convertidores\ConverterImageGenero.cs" />
     <Compile Include="Servicios\AzureService.cs" />
