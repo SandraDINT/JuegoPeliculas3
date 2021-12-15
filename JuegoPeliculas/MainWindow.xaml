@@ -155,7 +155,7 @@
                 <StackPanel DockPanel.Dock="Right"
                             VerticalAlignment="Top"
                             Width="250"
-                            Height="200">
+                            Height="220">
                     
                     <!--Usar OpenFileDialog-->
                     <Button x:Name="buttonCargarDatos"
@@ -175,6 +175,12 @@
                                 Content="Añadir película"
                                 Width="100"
                                 Click="buttonAddPelicula_Click"/>
+                        <Button x:Name="buttonAceptar"
+                                Content="Guardar película"
+                                Width="100"
+                                Margin="0,10,0,0"
+                                IsEnabled="{Binding Path=AddPeliculaBool}"
+                                Click="buttonAceptar_Click" />
                         <Button x:Name="buttonEditarPelicula"
                             Content="Editar película"
                                 Width="100"
@@ -185,6 +191,7 @@
                                 Width="100"
                                 Margin="0,10,0,0"
                                 Click="buttonEliminarPelicula_Click"/>
+                        
                     </StackPanel>
                 </StackPanel>
                 <DockPanel DockPanel.Dock="Bottom"

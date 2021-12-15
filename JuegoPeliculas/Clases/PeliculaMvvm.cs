@@ -14,8 +14,8 @@ class PeliculaMVVM : ObservableObject
 {
     private const int PUNTUACION = 10;
 
-    private ListaPeliculasService servicioPeliculas;
-    private AzureService azureService;
+    readonly ListaPeliculasService servicioPeliculas;
+    readonly AzureService azureService;
     private List<String> _nivelesDificultad;
     private Pelicula _peliculaFormulario;
 
@@ -157,14 +157,17 @@ class PeliculaMVVM : ObservableObject
         File.WriteAllText(ruta, personasJson);
     }
 
-    public void AddPelicula()
+    public void MostrarBotonGuardar()
     {
         AddPeliculaBool = true;
-
-        Pelicula pelicula = new Pelicula();
-        PeliculaActual = PeliculaFormulario;
         EditandoPelicula = true;
-        if(PeliculaFormulario != null)
+        PeliculaActual = PeliculaFormulario;
+    }
+    public void AddPelicula()
+    {
+        Pelicula pelicula;
+        
+        if (PeliculaFormulario != null)
         {
             pelicula =
             new Pelicula(PeliculaFormulario.Titulo, PeliculaFormulario.Pista, PeliculaFormulario.Cartel, PeliculaFormulario.Nivel, PeliculaFormulario.Genero);

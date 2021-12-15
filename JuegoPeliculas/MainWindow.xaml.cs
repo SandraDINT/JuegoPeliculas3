@@ -85,7 +85,7 @@ namespace JuegoPeliculas
 
         private void buttonAddPelicula_Click(object sender, RoutedEventArgs e)
         {
-            vm.AddPelicula();
+            vm.MostrarBotonGuardar();
         }
 
         private void buttonEliminarPelicula_Click(object sender, RoutedEventArgs e)
@@ -102,6 +102,11 @@ namespace JuegoPeliculas
         private void buttonFinalizar_Click(object sender, RoutedEventArgs e)
         {
             vm.FinalizarPartida();
+        }
+
+        private void buttonAceptar_Click(object sender, RoutedEventArgs e)
+        {
+            vm.AddPelicula();
         }
     }
 }
